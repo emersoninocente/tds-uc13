@@ -89,5 +89,5 @@ console.log(calcularDesconto(100, 20)); // 80
 ---
 ## 📚 Recursos complementares
 * [Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
-* [Arrow Functions]([https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
+* [Arrow Functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 * [Escopo de variáveis - W3Schools](https://www.w3schools.com/js/js_scope.asp)
