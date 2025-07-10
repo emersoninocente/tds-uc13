@@ -15,7 +15,8 @@
 ---
 
 ## 🧱 Estrutura do Projeto
-<img width="280" height="280" alt="estrutura_projeto_api" src="https://github.com/user-attachments/assets/fc1d200c-d07d-4b7b-93bf-bac596ccb8a5" />
+<img width="343" height="268" alt="image" src="https://github.com/user-attachments/assets/f3d79982-76f4-414e-b390-386aa8b2dcbe" />
+
 
 ---
 ## 🚀 Configuração Express
@@ -25,14 +26,28 @@ npm install express mysql2 dotenv
 ```
 
 ---
-`app.js`
+## 🚀 Lançador da aplicação
+`src/app.js`
 ```js
 const express = require("express");
-const app = express();
+const usuariosRoutes = require("./routes/usuarios");
 
-app.use(express.json()); // Permite JSON no corpo da requisição
+const app = express();
+app.use(express.json());
+
+app.use("/usuarios", usuariosRoutes); // Prefixo de rota
 
 module.exports = app;
+```
+
+`src/server.js`
+```js
+const app = require("./app");
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`API rodando em http://localhost:${port}`);
+});
 ```
 
 ---
@@ -45,7 +60,7 @@ DB_PASSWORD=1234
 DB_NAME=sistema_web
 ```
 
-`database/mysql.js`
+`src/database/mysql.js`
 ```js
 const mysql = require("mysql2");
 require("dotenv").config();
@@ -54,17 +69,25 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+});
+
+db.connect(err => {
+  if (err) {
+    console.error("Erro ao conectar no banco:", err.message);
+  } else {
+    console.log("Conectado ao banco de dados MySQL.");
+  }
 });
 
 module.exports = db;
 ```
 ## 📋 Rotas REST
-`routes/usuarios.js`
+`src/routes/usuarios.js`
 ```js
 const express = require("express");
 const router = express.Router();
-const usuarioController = require("../contr/usuarioController");
+const usuarioController = require("../controllers/usuarioController");
 
 router.get("/", usuarioController.listar);
 router.post("/", usuarioController.criar);
@@ -75,29 +98,71 @@ module.exports = router;
 ```
 ---
 ## 🧠 Controlador
-`contr/usuarioController.js`
+`src/controllers/usuarioController.js`
 ```js
 const db = require("../database/mysql");
 
 exports.listar = (req, res) => {
   db.query("SELECT * FROM usuarios", (err, results) => {
-    if (err) return res.status(500).json({ erro: "Erro ao consultar" });
+    if (err) return res.status(500).json({ erro: err.message });
     res.json(results);
   });
 };
 
 exports.criar = (req, res) => {
   const { nome, email, idade } = req.body;
-  db.query(
-    "INSERT INTO usuarios (nome, email, idade) VALUES (?, ?, ?)",
-    [nome, email, idade],
-    (err) => {
-      if (err) return res.status(500).json({ erro: err.message });
-      res.status(201).json({ mensagem: "Usuário criado com sucesso" });
-    }
-  );
+  const sql = "INSERT INTO usuarios (nome, email, idade) VALUES (?, ?, ?)";
+
+  db.query(sql, [nome, email, idade], err => {
+    if (err) return res.status(500).json({ erro: err.message });
+    res.status(201).json({ mensagem: "Usuário criado com sucesso" });
+  });
 };
 
-// atualizar e excluir seguem lógica semelhante
+exports.atualizar = (req, res) => {
+  const id = req.params.id;
+  const { nome, email, idade } = req.body;
+  const sql = "UPDATE usuarios SET nome = ?, email = ?, idade = ? WHERE id = ?";
+
+  db.query(sql, [nome, email, idade, id], err => {
+    if (err) return res.status(500).json({ erro: err.message });
+    res.json({ mensagem: "Usuário atualizado com sucesso" });
+  });
+};
+
+exports.excluir = (req, res) => {
+  const id = req.params.id;
+  const sql = "DELETE FROM usuarios WHERE id = ?";
+
+  db.query(sql, [id], err => {
+    if (err) return res.status(500).json({ erro: err.message });
+    res.json({ mensagem: "Usuário removido com sucesso" });
+  });
+};
 ```
 ---
+## 🧾 Comando SQL para criação da tabela
+```sql
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100),
+  email VARCHAR(100),
+  idade INT
+);
+```
+---
+<img width="872" height="352" alt="image" src="https://github.com/user-attachments/assets/e579dfc9-2efd-4e67-80fc-0d28705c2b9f" />
+
+---
+## 💡 Desafio de aula
+1. Criar API `cursos` com rotas REST
+2. Relacionar `usuarios` e `cursos` (ex. inscrição)
+3. Retornar usuários com seus cursos (JOIN)
+4. Testar todas as rotas com dados reais
+
+---
+## 📚 Recursos de apoio
+* [Express.js DOCs](https://expressjs.com/)
+* [RESTfull API - MDN](https://developer.mozilla.org/en-US/docs/Glossary/REST)
+* [Postman](https://www.postman.com/)
+* [Thuder Client VS Code](https://www.thunderclient.com/)
