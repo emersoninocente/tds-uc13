@@ -85,7 +85,9 @@ function calcularDesconto(valor, porcentagem) {
 
 console.log(calcularDesconto(100, 20)); // 80
 ```
+
 🎯 Adicionar *arrow function*, validação e comentários explicativos.
+
 ---
 ## 📚 Recursos complementares
 * [Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
