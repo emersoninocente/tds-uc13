@@ -75,3 +75,7 @@ Sistema de cadastro de usuários
 
 ---
 ![Atividade Prática](https://github.com/user-attachments/assets/8918f917-0cc1-4ceb-8cd2-5bd3d458f16a)
+
+---
+## 🔜 Material Extra:
+[ORM](https://www.alura.com.br/artigos/orm)
