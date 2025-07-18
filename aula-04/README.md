@@ -1,125 +1,65 @@
-# 🧑‍🎨 Aula 04 — Revisão Prática de Front-end
+# 🧠 Aula 04 — Introdução à Programação com JavaScript
 
-> HTML5 • CSS3 • Estrutura Semântica • Layout Responsivo com Flexbox e Grid
+> Variáveis • Tipos de Dados • Operadores • Estruturas de Controle
 
 ---
 
 ## 🎯 Objetivos
 
-- Reforçar a estrutura semântica com HTML5
-- Aplicar estilização com CSS
-- Criar layouts modernos com Flexbox e Grid
-- Desenvolver páginas responsivas e acessíveis
+- Compreender a sintaxe básica do JavaScript
+- Declarar e utilizar variáveis
+- Trabalhar com tipos de dados e operadores
+- Aplicar estruturas de decisão e repetição
 
 ---
 
-## 🧱 Estrutura Básica de um Site Estático
-revisao-frontend/
+## 🧪 Preparação
 
-├── index.html
+Criar pasta chamada `js-introducao` com arquivo principal:
 
-└── style.css
-
----
-
-## 📄 HTML5 — Estrutura Semântica
-
-### Tags principais:
-
-```html
-<header>   <!-- Cabeçalho -->
-<nav>      <!-- Navegação -->
-<main>     <!-- Conteúdo principal -->
-<section>  <!-- Seções temáticas -->
-<article>  <!-- Conteúdo independente -->
-<aside>    <!-- Conteúdo auxiliar -->
-<footer>   <!-- Rodapé -->
+```bash
+mkdir js-introducao
+cd js-introducao
+touch script.js
 ```
-> 💡 Use ` alt ` em imagens, ` label ` em formulários e  ` title ` para melhorar a acessibilidade.
-
+> Executar com:
+```bash
+node script.js
+```
 ---
-## 🎨 CSS - Estilização básica
 
-### Estrutura de estilo externa (` style.css `):
-```css
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f2f2f2;
-}
-
-header, footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-main {
-  padding: 40px;
-}
+## 📌 Variáveis
+### Formas de declarar
+```js
+var nome = "João";        // variável antiga
+let idade = 25;           // recomendada
+const PI = 3.1415;        // constante
 ```
 
 ---
-## 📐 Layout com Flexbox
-### CSS
-```css
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
-}
-```
-### HTML
-```html
-<div class="container">
-  <div class="item">Item 1</div>
-  <div class="item">Item 2</div>
-</div>
-```
+
+## 🔢 Tipos de dados
+![Tipos de dados JS](https://github.com/user-attachments/assets/9e0c4e0a-7105-4198-b027-91d301a92c51)
 
 ---
-## 🧮 Layout com Grid
-### CSS
-```css
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-```
-### HTML
-```html
-<div class="grid">
-  <div class="box">Conteúdo A</div>
-  <div class="box">Conteúdo B</div>
-</div>
-```
+## ➕ Operadores
+![Operadores](https://github.com/user-attachments/assets/51d9640e-4606-46f6-ac74-81f424d93753)
 
 ---
-## 📱 Responsividade com Media Querys
-### CSS
-```css
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-```
-> Use desing "mobile first" e testes em diferentes tamanhos de tela.
+## 🔁 Estruturas de Controle
+![Estruturas de Controle](https://github.com/user-attachments/assets/1f8c5292-6ab2-4a86-9046-5614b0dfd0cd)
+![Estruturas de Controle - WHILE](https://github.com/user-attachments/assets/01804f52-58a3-4cc7-93dd-7740a1e88eac)
 
 ---
-![Atividaade Prática](https://github.com/user-attachments/assets/47fc00dd-abe6-4107-b956-e496f080069e)
+## 🧠 Exercício Prático
+1. Criar arquivo ` script.js `
+2. Declarar variáveis com dados pessoais
+3. Criar um verificador de idade:
+   * Se idade >= 18 -> "Maior de Idade"
+   * Senão -> "Menor de Idade"
+4. Criar um laço que exibe os números de 1 ao 10
+5. Testar e comentar cada bloco de código
 
 ---
-## 📚 Recursos de Apoio
-* [MDN HTML Semântico](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element)
-* [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
-* [Responsividade](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/CSS_layout/Responsive_Design)
+## 💡 Desafio Extra
+* Crie um script que recebe 3 notas e calcula a média imprimindo no console.

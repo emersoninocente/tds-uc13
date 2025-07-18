@@ -1,65 +1,95 @@
-# 🧠 Aula 05 — Introdução à Programação com JavaScript
+# 🧠 Aula 05 — Funções e Escopo em JavaScript
 
-> Variáveis • Tipos de Dados • Operadores • Estruturas de Controle
+> Declaração • Parâmetros • Retorno • Escopo Local e Global • Arrow Functions
 
 ---
 
 ## 🎯 Objetivos
 
-- Compreender a sintaxe básica do JavaScript
-- Declarar e utilizar variáveis
-- Trabalhar com tipos de dados e operadores
-- Aplicar estruturas de decisão e repetição
+- Compreender o conceito e utilidade das funções
+- Aprender a declarar funções tradicionais e modernas
+- Trabalhar com parâmetros e valores de retorno
+- Dominar escopos: global, local, função, bloco
+- Aplicar modularização em scripts
 
 ---
 
-## 🧪 Preparação
+## 📌 O que é uma função?
 
-Criar pasta chamada `js-introducao` com arquivo principal:
+> Uma função é um bloco de código que executa uma tarefa específica e pode ser reutilizado.
 
-```bash
-mkdir js-introducao
-cd js-introducao
-touch script.js
-```
-> Executar com:
-```bash
-node script.js
-```
----
-
-## 📌 Variáveis
-### Formas de declarar
 ```js
-var nome = "João";        // variável antiga
-let idade = 25;           // recomendada
-const PI = 3.1415;        // constante
+function saudacao() {
+  console.log("Olá, bem-vindo!");
+}
+saudacao(); // Executa a função
+```
+---
+## 🧾 Funções com parâmetros
+```js
+function apresentar(nome, idade) {
+  console.log(`Nome: ${nome} — Idade: ${idade}`);
+}
+apresentar("Emerson", 36);
+```
+---
+## 🔙 Retorno de valor (`return`)
+```js
+function somar(a, b) {
+  return a + b;
+}
+let resultado = somar(5, 3); // resultado = 8
+```
+🔁 Pode retornar valores para serem usados em outras partes do código.
+---
+## 💡 Arrow Functions
+```js
+const subtrair = (a, b) => a - b;
+console.log(subtrair(10, 4)); // 6
+```
+☕ Sintaxe moderna mais compacta (ES6)
+---
+## 📚 Escopo de variáveis
+### Escopo Global
+```js
+let nome = "Ana"; // visível em todo o script
+```
+### Escopo local (somente dentro da função)
+```js
+function mostrar() {
+  let idade = 30; // só existe dentro da função
+}
+```
+### Escopo de bloco
+```js
+if (true) {
+  let mensagem = "Dentro do bloco";
+}
+console.log(mensagem); // Erro: variável fora do escopo
+```
+---
+## 🔧 Atividade prática
+1. Criar função que recebe 3 notas e retorna a média
+2. Criar uma função que verifica se o valor é par ou ímpar
+3. Criar arrow function que multiplica dois números
+4. Criar uma função que recebe um nome e retorna "Olá, [nomelido]!"
+📁 Criar pasta `funcoes-js` e o arquivo `funcoes.js` para os scripts.
+---
+## 💪 Desafio criativo
+📋 Criar um **sistema de cálculo de desconto** com base em valor e porcentagem:
+```js
+function calcularDesconto(valor, porcentagem) {
+  const desconto = valor * (porcentagem / 100);
+  return valor - desconto;
+}
+
+console.log(calcularDesconto(100, 20)); // 80
 ```
 
----
-
-## 🔢 Tipos de dados
-![Tipos de dados JS](https://github.com/user-attachments/assets/9e0c4e0a-7105-4198-b027-91d301a92c51)
+🎯 Adicionar *arrow function*, validação e comentários explicativos.
 
 ---
-## ➕ Operadores
-![Operadores](https://github.com/user-attachments/assets/51d9640e-4606-46f6-ac74-81f424d93753)
-
----
-## 🔁 Estruturas de Controle
-![Estruturas de Controle](https://github.com/user-attachments/assets/1f8c5292-6ab2-4a86-9046-5614b0dfd0cd)
-![Estruturas de Controle - WHILE](https://github.com/user-attachments/assets/01804f52-58a3-4cc7-93dd-7740a1e88eac)
-
----
-## 🧠 Exercício Prático
-1. Criar arquivo ` script.js `
-2. Declarar variáveis com dados pessoais
-3. Criar um verificador de idade:
-   * Se idade >= 18 -> "Maior de Idade"
-   * Senão -> "Menor de Idade"
-4. Criar um laço que exibe os números de 1 ao 10
-5. Testar e comentar cada bloco de código
-
----
-## 💡 Desafio Extra
-* Crie um script que recebe 3 notas e calcula a média imprimindo no console.
+## 📚 Recursos complementares
+* [Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
+* [Arrow Functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+* [Escopo de variáveis - W3Schools](https://www.w3schools.com/js/js_scope.asp)
