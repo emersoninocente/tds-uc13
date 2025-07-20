@@ -68,6 +68,24 @@ if (true) {
 console.log(mensagem); // Erro: variável fora do escopo
 ```
 ---
+### Import e Export
+Podemos encontrar duas notações para este processo
+
+** Notação CommonJS **
+> const express = require('express');
+> const LivroController = require('../controllers/livroController.js');
+> ...
+> module.exports = <nome do modulo ou funcao que quer exportar>
+
+** Notação EcmaScript Module **
+Para uso precisamos incluir `type: module`no arquivo **package.json**
+> import express from 'express';
+> import LivroController from '../controllers/livroController.js';
+> ...
+> export { <nome do modulo ou funcao que se quer exportar>, <nome de outra funcao se houver>}
+
+Mais material em [Guia completo de importação e exportação](https://www.alura.com.br/artigos/guia-importacao-exportacao-modulos-javascript)
+---
 ## 🔧 Atividade prática
 1. Criar função que recebe 3 notas e retorna a média
 2. Criar uma função que verifica se o valor é par ou ímpar
