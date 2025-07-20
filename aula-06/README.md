@@ -1,4 +1,4 @@
-# 🧩 Aula 08 — Objetos e Arrays em JavaScript
+# 🧩 Aula 06 — Objetos e Arrays em JavaScript
 
 > Modelagem de dados • Acesso e manipulação • Métodos úteis • Iteração e filtragem
 
@@ -96,7 +96,7 @@ Modelar um **sistema de estoque** simples que lê objetos contendo o nome do pro
 * [Métodos úteis](https://www.w3schools.com/js/js_array_methods.asp)
 
 ---
-# 📡 Aula 08.5 — JSON e Consumo de API com JavaScript
+# 📡 Aula 06.5 — JSON e Consumo de API com JavaScript
 
 > Estrutura JSON • `fetch()` • Promises • Manipulação de dados externos
 
