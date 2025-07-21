@@ -71,13 +71,13 @@ console.log(mensagem); // Erro: variável fora do escopo
 ### Import e Export
 Podemos encontrar duas notações para este processo
 
-** Notação CommonJS **
+**Notação CommonJS**
 > const express = require('express');
 > const LivroController = require('../controllers/livroController.js');
 > ...
 > module.exports = <nome do modulo ou funcao que quer exportar>
 
-** Notação EcmaScript Module **
+**Notação EcmaScript Modulo**
 Para uso precisamos incluir `type: module`no arquivo **package.json**
 > import express from 'express';
 > import LivroController from '../controllers/livroController.js';
