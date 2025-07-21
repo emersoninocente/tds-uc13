@@ -76,7 +76,7 @@ Podemos encontrar duas notações para este processo
 const express = require('express');
 const LivroController = require('../controllers/livroController.js');
 ...
-module.exports = <nome do modulo ou funcao que quer exportar>
+module.exports = <nome do modulo ou funcao que quer exportar>;
 ```
 
 **Notação EcmaScript Modulo**
@@ -85,7 +85,7 @@ Para uso precisamos incluir `type: module`no arquivo **package.json**
 import express from 'express';
 import LivroController from '../controllers/livroController.js';
 ...
-export { <nome do modulo ou funcao que se quer exportar>, <nome de outra funcao se houver>}
+export { <nome do modulo ou funcao que se quer exportar>, <nome de outra funcao se houver>};
 ```
 
 Mais material em [Guia completo de importação e exportação](https://www.alura.com.br/artigos/guia-importacao-exportacao-modulos-javascript)
