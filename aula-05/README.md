@@ -115,3 +115,50 @@ console.log(calcularDesconto(100, 20)); // 80
 * [Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
 * [Arrow Functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 * [Escopo de variáveis - W3Schools](https://www.w3schools.com/js/js_scope.asp)
+
+---
+## Exemplos criados em aula
+### Exemplo 01
+```js
+// Usando IF ELSE
+let i=0;
+
+if (i<5){
+    console.log(`O valor é ${i}`);
+} else {
+    console.log("Encerrar com CTRL+C");
+}
+```
+### Exemplo 02
+```js
+// Usando SWITCH...CASE
+let diadasemana = "sabado";
+switch (diadasemana){
+    case "segunda":
+        console.log("Hoje tem aula da UC13!");
+        // Precisamos inserir uma quebra para forçar a saída do switch
+        break;
+    case "terca":
+        console.log("hoje não tem aula da UC13!");
+        break;
+    // ...
+    default:
+        console.log("Não tem aula!");
+}
+```
+### Exemplo 03
+```js
+// Usando FOR
+for(let i=0; i<10;i++){
+    console.log(`O valor de i é ${i}.`);
+}
+```
+### Exemplo 04
+```js
+// Usando WHILE
+let i = 0;
+while(i<10){
+    console.log(`O valor de i é ${i}.`);
+    i++;
+}
+```
