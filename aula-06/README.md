@@ -167,3 +167,102 @@ data.forEach(usuario => {
 * [API - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API)
 * [JSONPlaceholder (API Gratuita](https://jsonplaceholder.typicode.com/)
 * [RandomUser API](https://randomuser.me/)
+
+---
+## Material produzido em aula
+### Exercício 01
+```js
+const valores = [1, 2, 3, 4, 5];
+
+for (let i = 0; i < valores.length; i++) {
+    console.log(valores[i]*2);
+}
+```
+### Exercício 02
+```js
+const livro = {
+    titulo: "O Senhor dos Anéis",
+    autor: "J.R.R. Tolkien",
+    anoPublicacao: 1954,
+};
+console.log(livro);
+console.log("Detalhes do Livro:");
+console.log(`Título: ${livro.titulo}`);
+console.log(`Autor: ${livro.autor}`);
+console.log(`Ano de Publicação: ${livro.anoPublicacao}`);
+```
+### Exercício 03
+```js
+const listaProdutos = [
+    { id: 1, nome: "Camiseta", preco: 29.99, quant: 5},
+    { id: 2, nome: "Calça", preco: 79.99, quant: 3 },   
+    { id: 3, nome: "Tênis", preco: 199.99, quant: 2 }
+];
+
+function calcularValorTotal(produtos) {
+    let total = 0;
+    for (let i = 0; i < produtos.length; i++) {
+        total += produtos[i].preco * produtos[i].quant;
+    }
+    return total;
+};
+
+let valorTotal = calcularValorTotal(listaProdutos);
+console.log(`Valor total dos produtos: R$ ${valorTotal.toFixed(2)}`);
+```
+### Exercício 04
+```js
+const listaProdutos = [
+    { id: 1, nome: "Camiseta", preco: 29.99, quant: 5},
+    { id: 2, nome: "Calça", preco: 79.99, quant: 3 },   
+    { id: 3, nome: "Tênis", preco: 199.99, quant: 2 }
+];
+
+function filtrarProdutosPorPreco(produtos, precoMinimo) {
+    return produtos.filter(produtos => produtos.preco >= precoMinimo);
+}
+
+//console.log("Produtos com preço maior ou igual a R$ 50.00:");
+const produtosFiltrados = filtrarProdutosPorPreco(listaProdutos, 50.00);
+console.log(produtosFiltrados);
+```
+### Exercício 05
+```js
+
+```
+### Exercício 06
+```js
+const pessoas = [
+    { nome: "João", idade: 25},
+    { nome: "Maria", idade: 30},
+    { nome: "Pedro", idade: 22 }
+];
+
+function calculaMediaIdade(pessoas) {
+    let totalIdade = 0;
+    for (let i = 0; i < pessoas.length; i++) {
+        totalIdade += pessoas[i].idade;
+    }
+    return totalIdade / pessoas.length;
+};
+
+const mediaIdade = calculaMediaIdade(pessoas);
+console.log(mediaIdade);
+```
+### Exercício 07
+```js
+function dadosUsuarios() {
+  return fetch("https://randomuser.me/api")
+    .then(response => response.json())
+    .then(data => {
+      console.log("Usuários:", data);
+      console.log("Nome do primeiro usuário:", data.results[0].name.first + " " + data.results[0].name.last);
+      console.log("Foto:", data.results[0].picture.large);
+    })
+    .catch(error => {
+      console.error("Erro na requisição:", error);
+    });
+};
+
+dadosUsuarios();
+```
