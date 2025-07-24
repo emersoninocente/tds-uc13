@@ -43,6 +43,32 @@ module.exports = router;
 > **Identificador de Recursos Universal**, como o nome já diz, é o identificador do recurso. Nele vamos ter o protocolo usado, método para acesso, o localizador e o nome do recurso a ser acessado.
 > Exemplo: `http://www.emersoninocente.com.br/index.html` se for um navegador solicitando a página o método será **GET**.
 ---
+## 🖥️ Instalando Express.js
+> O **Express.js** é um framework web rápido e minimalista para o Node.js que simplifica o processo de construção de aplicações web e mobile.
+```bash
+npm install express
+```
+> Para usar o express em nossa aplicação usamos o seguinte código:
+```js
+import express from 'express';
+const app = express();
+```
+> Para gerenciamento de variáveis de ambiente vamos usar outra biblioteca do Node.js que o **dotenv**. Para realizar a instalação usamos o comando:
+```bash
+npm install dotenv
+```
+> Para consumir o arquivo `.env` criado na raiz de nossa aplicação usamos os comandos abaixo:
+```js
+import dotenv from 'dotenv';
+dotenv.config();
+```
+---
+## 🖥️ Instalando Nodemon
+> O **Nodemon** é uma ferramenta de grande ajuda para o processo de desenvolvimento, ele restarta a aplicação cada vez que é detectada alguma alteração nos arquivos da nossa aplicação. Para realizar a instalação somente para o ambiente de desenvolvimento usaremos o seguinte comando:
+```bash
+npm install nodemon --save-dev
+```
+---
 ## 🔐 Segurança
 > A segurança é um ponto importante em nossa API, pensando que ela pode ser publicada na **internet** e não somente na rede interna da empresa. Por tratar de exposição de dados, podemos ter dados importantes para empresa ou dados sensíveis conforme a **LGPD**. A segurança deve ser considerada desde a criação da nossa API e aplicada em diversas frentes.
 > - Implementar criptografia;
