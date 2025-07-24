@@ -45,7 +45,7 @@ module.exports = router;
 ---
 
 ## Projeto Primeira API usando Express.js
-> app.js
+> src/app.js
 ```js
 import express from 'express';
 
@@ -65,4 +65,14 @@ app.delete('/', (req, res) => {
 });
 
 export default app;
+```
+
+> src/server.js
+```js
+import app from "./app.js";
+
+const PORT = process.env.PORT || 3000; // Busca no arquivo .env a variável PORT ou usa 3000 como padrão
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
 ```
