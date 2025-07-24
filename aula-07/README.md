@@ -43,7 +43,13 @@ module.exports = router;
 > **Identificador de Recursos Universal**, como o nome já diz, é o identificador do recurso. Nele vamos ter o protocolo usado, método para acesso, o localizador e o nome do recurso a ser acessado.
 > Exemplo: `http://www.emersoninocente.com.br/index.html` se for um navegador solicitando a página o método será **GET**.
 ---
-
+## 🔐 Segurança
+> A segurança é um ponto importante em nossa API, pensando que ela pode ser publicada na **internet** e não somente na rede interna da empresa. Por tratar de exposição de dados, podemos ter dados importantes para empresa ou dados sensíveis conforme a **LGPD**. A segurança deve ser considerada desde a criação da nossa API e aplicada em diversas frentes.
+> - Implementar criptografia;
+> - Implementar autenticação;
+> - Código bem construído;
+> - Bibliotecas, frameworks, etc devem sempre estar atualizados.
+---
 ## Projeto Primeira API usando Express.js
 > src/app.js
 ```js
