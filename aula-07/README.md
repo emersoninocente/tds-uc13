@@ -43,3 +43,26 @@ module.exports = router;
 > **Identificador de Recursos Universal**, como o nome já diz, é o identificador do recurso. Nele vamos ter o protocolo usado, método para acesso, o localizador e o nome do recurso a ser acessado.
 > Exemplo: `http://www.emersoninocente.com.br/index.html` se for um navegador solicitando a página o método será **GET**.
 ---
+
+## Projeto Primeira API usando Express.js
+> app.js
+```js
+import express from 'express';
+
+const app = express();
+// Montar nossas rotas
+app.get('/', (req, res) => {
+    res.status(200).send('Acessando a raiz da API usando GET');
+});
+app.post('/', (req, res) => {
+    res.status(201).send('Acessando a raiz da API usando POST');
+});
+app.put('/', (req, res) => {
+    res.status(200).send('Acessando a raiz da API usando PUT');
+});
+app.delete('/', (req, res) => {
+    res.status(204).send();
+});
+
+export default app;
+```
