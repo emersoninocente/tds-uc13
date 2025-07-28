@@ -61,7 +61,9 @@ FLUSH PRIVILEGES;
 .
 ```
 5º) Criar o arquivo `.env` com as variáveis de ambiente necessárias
+
 6º) Iniciar a estrutura de pastas do projeto
+
 7º) Iniciar o desenvolvimento do projeto
 
 ---
