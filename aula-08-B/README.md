@@ -84,3 +84,37 @@ ALTER TABLE cursos ADD FOREIGN KEY (categoria_id) REFERENCES categorias(id);
 * [SQL JOIN - W3Schools](https://www.w3schools.com/sql/sql_join.asp)
 * [Guia SQL para relacionamentos](https://sqlbolt.com/)
 * [Modelo Entidade-Relacional](https://www.lucidchart.com/pages/er-diagrams)
+
+---
+## Exemplos para testes em aula
+```sql
+-- Criar tabela Clientes
+CREATE TABLE Clientes (
+    ClienteID INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+    Nome VARCHAR(50),
+    Cidade VARCHAR(50)
+);
+
+-- Inserir dados na tabela Clientes
+INSERT INTO Clientes (Nome, Cidade) VALUES
+('Ana', 'Porto Alegre'),
+('Bruno', 'São Paulo'),
+('Carla', 'Rio de Janeiro'),
+('Diego', 'Curitiba');
+
+-- Criar tabela Pedidos
+CREATE TABLE Pedidos (
+    PedidoID INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+    ClienteID INT,
+    Valor DECIMAL(10, 2),
+    DataPedido DATE,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
+-- Inserir dados na tabela Pedidos
+INSERT INTO Pedidos (ClienteID, Valor, DataPedido) VALUES
+(1, 150.00, '2025-07-01'),
+(2, 200.00, '2025-07-15'),
+(2, 300.00, '2025-07-20'),
+(4, 400.00, '2025-07-25');
+```
