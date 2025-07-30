@@ -1,4 +1,4 @@
-# 🔗 Aula 10 — SQL Avançado + Relacionamento de Tabelas
+# 🔗 Aula 08-B — SQL Avançado + Relacionamento de Tabelas
 
 > WHERE • ORDER BY • LIKE • JOIN • Relacionamentos
 
