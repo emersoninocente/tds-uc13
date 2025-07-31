@@ -83,6 +83,84 @@ DELETE FROM usuarios WHERE id = 3;
 * [SQL Tutorial - Mode](https://mode.com/sql-tutorial/introduction-to-sql)
 
 ---
+## Modelo de banco de dados
+### Diagrama ER
+<img width="1196" height="516" alt="image" src="https://github.com/user-attachments/assets/19d36bb9-e7c3-4945-a5d7-d6bc1a437d17" />
+
+### SQL
+```sql
+CREATE OR REPLACE TABLE `users` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`nome` TEXT(65535) NOT NULL,
+	`email` TEXT(65535) NOT NULL UNIQUE,
+	`passwordHash` TEXT(65535) NOT NULL,
+	`provider` BOOLEAN NOT NULL DEFAULT true COMMENT 'True = Ativo, False = Inativo',
+	`isAdmin` BOOLEAN NOT NULL DEFAULT false COMMENT 'True = Admin, False = user',
+	`onlyRead` BOOLEAN NOT NULL COMMENT 'True = somente leitura, False = user normal',
+	`createdAt` DATE,
+	`updatedAt` DATE,
+	PRIMARY KEY(`id`)
+);
+
+CREATE OR REPLACE TABLE `customers` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`nome` TEXT(65535) NOT NULL,
+	`email` TEXT(65535) NOT NULL,
+	`status` BOOLEAN NOT NULL,
+	`createdAt` DATE,
+	`updatedAt` DATE,
+	PRIMARY KEY(`id`)
+);
+
+CREATE OR REPLACE TABLE `contacts` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` TEXT(65535) NOT NULL,
+	`email` TEXT(65535) NOT NULL,
+	`status` ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
+	`createdAt` DATE,
+	`updatedAt` DATE,
+	`customerId` INTEGER NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+ALTER TABLE `contacts`
+ADD FOREIGN KEY(`customerId`) REFERENCES `customers`(`id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+```
+---
+## Exemplos para testes em aula
+```sql
+-- Criar tabela Clientes
+CREATE TABLE Clientes (
+    ClienteID INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+    Nome VARCHAR(50),
+    Cidade VARCHAR(50)
+);
+
+-- Inserir dados na tabela Clientes
+INSERT INTO Clientes (Nome, Cidade) VALUES
+('Ana', 'Porto Alegre'),
+('Bruno', 'São Paulo'),
+('Carla', 'Rio de Janeiro'),
+('Diego', 'Curitiba');
+
+-- Criar tabela Pedidos
+CREATE TABLE Pedidos (
+    PedidoID INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+    ClienteID INT,
+    Valor DECIMAL(10, 2),
+    DataPedido DATE,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
+-- Inserir dados na tabela Pedidos
+INSERT INTO Pedidos (ClienteID, Valor, DataPedido) VALUES
+(1, 150.00, '2025-07-01'),
+(2, 200.00, '2025-07-15'),
+(2, 300.00, '2025-07-20'),
+(4, 400.00, '2025-07-25');
+```
+---
 # 🔗 Aula 08-B — SQL Avançado + Relacionamento de Tabelas
 
 > WHERE • ORDER BY • LIKE • JOIN • Relacionamentos
