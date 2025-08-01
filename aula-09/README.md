@@ -1,4 +1,4 @@
-# 🌐 Aula 08 - Modelando nosso projeto
+# 🌐 Aula 09 - Modelando nosso projeto
 ## 🎯 Objetivos
 ---
 * Revisar arquitetura MVC (rapidamente no quadro)
@@ -62,9 +62,63 @@ FLUSH PRIVILEGES;
 .
 ```
 5º) Criar o arquivo `.env` com as variáveis de ambiente necessárias
+```js
+# API configuration
+PORT=8080
+# database configuration
+USERNAMEDB='usuario_da_base_dados'
+PASSWORDDB='senha_acesso_base_dados'
+HOSTDB='servidor_nome_ou_IP'
+PORTDB='porta_do_banco_dados'
+NAMEDB='nome_base_dados'
+# sequelize configuration
+DIALECTDB='mariadb'
+```
 
 6º) Iniciar a estrutura de pastas do projeto
+> Precisamos "montar" a estrutura de pastas do nosso projeto para que cada "coisa" fique organizada no seu lugar. Um exemplo de estrutura temos abaixo:
+
+![Modelo de estutura de pastas do projeto.](image.png)
 
 7º) Iniciar o desenvolvimento do projeto
+> Precisamos agora iniciar o desenvolvimento do nosso projeto. Lembrando que temos alguns arquivos que tratam do processo de iniciar o programa. Lembrando que no arquivo package.json citamos na tag `main` qual seria o arquivo de inicio do programa (ou nosso web server), e que este chama um outro programa que é nossa aplicação em si (digamos assim, que vai estar no primeiro programa).
 
+```bash
+./src/app.js
+```
+```js
+import express from 'express';
+import { configDotenv } from 'dotenv';
+
+configDotenv();
+
+class App {
+  constructor() {
+    this.server = express();
+    this.middlewares();
+  }
+
+  middlewares() {
+    this.server.use(express.json());
+  }
+
+  routes() {
+    this.server.use(express.json());
+  }
+}
+
+export default new App().server;
+```
+```bash
+./src/server.js
+```
+```js
+import app from "./app.js";
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3000}`);
+});
+```
+
+> Com isto já devemos ter um servidor com capacidade de rodar, vamos testar!
 ---
