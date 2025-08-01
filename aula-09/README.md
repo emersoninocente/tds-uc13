@@ -1,6 +1,7 @@
 # 🌐 Aula 08 - Modelando nosso projeto
 ## 🎯 Objetivos
 ---
+* Revisar arquitetura MVC (rapidamente no quadro)
 * Tipos de arquivos executáveis do Node.js
 * Preparando para iniciar novo projeto
 * Modelagem do projeto
