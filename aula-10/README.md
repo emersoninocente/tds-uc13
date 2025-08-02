@@ -130,59 +130,201 @@ export default new Database();
 ```
 
 ### 🏗️ Criando as classes de acesso as tabelas (Models)
+> Com o Sequelize, usamos os modelos para representar cada tabela existente no nosso banco de dados. Assim de uma forma abstrata, teremos no modelo criado em nossa programação uma representação da tabela e tudo que foi definido nela. Vamos analisar o modelo ER abaixo:
+
+![Modelo ER - Livraria](image.png)
+
+> Conforme o modelo apresentado teremos quatro modelos a serem criados, um para *reservations*, um para *users*, outro para *books* e finalmente um para *genres*. Claro que para cada situações teremos mais ou menos modelos a serem representados em nosso programa. E no caso de entidades no SGBD que não precisam ser manipuladas por nosssa programação, não precisam ser "modeladas".
+- Deixo o modelo SQL abaixo (atenção que modelo precisa alguns ajustes):
+
+```sql
+CREATE OR REPLACE TABLE `users` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`phone` INTEGER NOT NULL,
+	`birthday` DATE,
+	`nationality` VARCHAR(255),
+	`isAdmin` BOOLEAN NOT NULL DEFAULT false,
+	`isAuthor` BOOLEAN NOT NULL DEFAULT false,
+	`status` BOOLEAN NOT NULL DEFAULT true,
+	`password` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`, `email`, `phone`)
+);
+
+CREATE OR REPLACE TABLE `books` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`title` VARCHAR(255) NOT NULL,
+	`isbn` VARCHAR(255) NOT NULL,
+	`genreId` INTEGER NOT NULL,
+	`authorId` INTEGER NOT NULL,
+	PRIMARY KEY(`id`, `isbn`)
+);
+
+CREATE OR REPLACE TABLE `genres` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE OR REPLACE TABLE `reservations` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`bookId` INTEGER NOT NULL,
+	`userId` INTEGER NOT NULL,
+	`date` DATE NOT NULL,
+	`comments` VARCHAR(255),
+	PRIMARY KEY(`id`)
+);
+
+ALTER TABLE `books`
+ADD FOREIGN KEY(`authorId`) REFERENCES `users`(`id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `books`
+ADD FOREIGN KEY(`genreId`) REFERENCES `genres`(`id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `reservations`
+ADD FOREIGN KEY(`bookId`) REFERENCES `books`(`id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `reservations`
+ADD FOREIGN KEY(`userId`) REFERENCES `users`(`id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+```
+
+> Vamos ver como fica o modelo da tabela *users*. `src/models/User.js`
+```js
+import Sequelize, { Model } from "sequelize";
+
+class User extends Model {
+  static init(sequelize) {
+    super.init({
+        name: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        email: {
+          type: Sequelize.STRING,
+          allowNull: false,
+          unique: true,
+          key: true,
+        },
+        phone: {
+          type: Sequelize.STRING,
+          allowNull: false,
+          key: true,
+        },
+        birthday: {
+          type: Sequelize.DATE,
+          allowNull: true,
+        },
+        nationality: {
+          type: Sequelize.STRING,
+          allowNull: true,
+        },
+        isAdmin: {
+          type: Sequelize.BOOLEAN,
+          defaultValue: false,
+        },
+        isAuthor: {
+          type: Sequelize.BOOLEAN,
+          defaultValue: false,
+        },
+        status: {
+          type: Sequelize.ENUM('active', 'inactive', 'banned'),
+          defaultValue: 'active',
+        },
+        passwordHash: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+      }, {
+        sequelize,
+        tableName: 'users',
+      });
+  }
+  
+  static associate(models) {
+    this.hasMany(models.Reservation, { foreignKey: 'userId', as: 'reservations' });
+    this.hasMany(models.Book, { foreignKey: 'authorId', as: 'books' });
+  }
+}
+
+export default User;
+```
+
+> Em aula vamos criar as demais *models*.
 
 ### Consumindo as classes criadas (Controllers)
-> As classes criadas nos Controllers, servem para as chamadas das rotas consumindo as classes dos Models para acesso aos dados gravados no SGBD.
+> As classes criadas nos *models*, servem para as chamadas das rotas que consumirão as classes dos *controllers* para acesso aos dados gravados no SGBD. Vamos ver como fica nosso `src/controllers/UsersController.js`
+```js
+import User from '../models/User.js';
 
+class UsersController {
+  async index(req, res) {
+    try {
+      const users = await User.findAll();
+      return res.json(users);
+    } catch (error) {
+      return res.status(500).json({ error: 'Failed to retrieve users' });
+    }
+  }
 
+  async show(req, res) {
+    try {
+      const user = await User.findOne({
+        where: { id: req.params.id },
+      });
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      return res.json(user);
+    } catch (error) {
+      return res.status(500).json({ error: 'Failed to retrieve user' });
+      console.error(error);
+    }
+  }
 
-📺
-🧑‍💻
-🖱️
-🖥️
-🗃️
-📱
-🎙️
-📣
-🎨
-💬
-🧑‍🎨
-🧱
-⚖️
-💡
-🧩
-🧠
-🌍
-📌
-✏️
-🖌️
-🧭
-🚀
-🛡️
-⚙️
-🧮
-🛂
-🔧
-🛠️
-🏗️
-📐
-🗂️
-📖
-🧾
-📝
-📋
-📦
-🎯
-✅
-🧪
-📚
-➡️
-⬅️
-↔️
-↩️
-🔄
-↕️
-⬆️
-⬇️
-↖️
-↘️
+  async create(req, res) {
+    try {
+      const user = await User.create(req.body);
+      return res.status(201).json(user);
+    } catch (error) {
+      return res.status(400).json({ error: 'Failed to create user' });
+    }
+  }
+
+  async update(req, res) {
+    try {
+      const [updated] = await User.update(req.body, {
+        where: { id: req.params.id },
+      });
+      if (!updated) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      const updatedUser = await User.findOne({ where: { id: req.params.id } });
+      return res.json(updatedUser);
+    } catch (error) {
+      return res.status(400).json({ error: 'Failed to update user' });
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      const deleted = await User.destroy({
+        where: { id: req.params.id },
+      });
+      if (!deleted) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      return res.status(204).send();
+    } catch (error) {
+      return res.status(500).json({ error: 'Failed to delete user' });
+    }
+  }
+}
+
+export default new UsersController();
+```
+
+---
+## 📝 Material Extra
+- [Sequelize ORM](https://medium.com/@ogustavorichard/sequelize-orm-ccc3a54a5f05)
