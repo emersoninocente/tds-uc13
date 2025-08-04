@@ -1,0 +1,537 @@
+type: collection.insomnia.rest/5.0
+name: Livraria
+meta:
+  id: wrk_9b4582093a2744ebb9c10e5528df52d5
+  created: 1754102240878
+  modified: 1754102240878
+  description: ""
+collection:
+  - url: http://localhost:8080/users
+    name: List All Users
+    meta:
+      id: req_8fc70ec415894c4782206f959f760ab6
+      created: 1754102257089
+      modified: 1754102312645
+      isPrivate: false
+      description: ""
+      sortKey: -1754102257089
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/users/2
+    name: Show User
+    meta:
+      id: req_9b24af01754f41a4935b8655608bf081
+      created: 1754102317637
+      modified: 1754102650519
+      isPrivate: false
+      description: ""
+      sortKey: -1754102317637
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/users
+    name: Cria User
+    meta:
+      id: req_50ca284a2bd54a72991c4ba49202d6d9
+      created: 1754102346847
+      modified: 1754104021075
+      isPrivate: false
+      description: ""
+      sortKey: -1754102346847
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"João Galinha",
+        	"email": "joao.galinha@minhalivraria.com.br",
+        	"phone": "+55 54 99999 9999",
+        	"status": "active",
+        	"passwordHash": "M1nh2S3nhAPr1vaDA-"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/users/2
+    name: Atualiza User
+    meta:
+      id: req_ba1f735665604da3971a907f1545536b
+      created: 1754102662243
+      modified: 1754106842954
+      isPrivate: false
+      description: ""
+      sortKey: -1754102662243
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {	
+            "name": "João Galinha",
+        		"email": "joao.galinha@minhalivraria.com.br",
+        		"phone": "+55 54 99999 9997",
+        		"birthday": "1999-12-21T19:20:00.000Z",
+        		"nationality": "Brasileiro",
+        		"isAdmin": false,
+        		"isAuthor": true,
+        		"status": "active",
+        		"passwordHash": "M1nh2S3nhAPr1vaDA-",
+        		"createdAt": "2025-08-02T03:06:52.000Z",
+        		"updatedAt": "2025-08-02T03:51:50.000Z"
+        	}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/users/2
+    name: Deleta User
+    meta:
+      id: req_176e737bed9d4e71aa2dde85d98a7a32
+      created: 1754102731309
+      modified: 1754102756929
+      isPrivate: false
+      description: ""
+      sortKey: -1754102731309
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/genres
+    name: List All Generos
+    meta:
+      id: req_7d64a0c8632c40b3bee6c90329bbd0f8
+      created: 1754103716087
+      modified: 1754104154417
+      isPrivate: false
+      description: ""
+      sortKey: -1754103716087
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/genres/3
+    name: Show Genero
+    meta:
+      id: req_c95e63b2bcd1452880a5adb85463195d
+      created: 1754104061377
+      modified: 1754104147988
+      isPrivate: false
+      description: ""
+      sortKey: -1754104061377
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/genres
+    name: Cria Genero
+    meta:
+      id: req_a8074a45e99c4c489001ca74d9eaabb7
+      created: 1754104086078
+      modified: 1754104163862
+      isPrivate: false
+      description: ""
+      sortKey: -1754104086078
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Conto"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/genres/4
+    name: Atualiza Genero
+    meta:
+      id: req_baed516cf3af44d6b6c0b1e4dd148e8f
+      created: 1754104195793
+      modified: 1754104242097
+      isPrivate: false
+      description: ""
+      sortKey: -1754104195793
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Contos"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/genres/4
+    name: Deleta Genero
+    meta:
+      id: req_fe399c565b744f0bb3b697591e0fafa2
+      created: 1754104197165
+      modified: 1754104280745
+      isPrivate: false
+      description: ""
+      sortKey: -1754104197165
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/books
+    name: List All Books
+    meta:
+      id: req_36c1082f8d754c5c84891d7080ba5147
+      created: 1754105839383
+      modified: 1754105860653
+      isPrivate: false
+      description: ""
+      sortKey: -1754105839384
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/reservations
+    name: List All Reservations
+    meta:
+      id: req_4879258caa7c433aa0cec0598434b3ba
+      created: 1754105870905
+      modified: 1754105913369
+      isPrivate: false
+      description: ""
+      sortKey: -1754105870905
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/books/1
+    name: Show Book
+    meta:
+      id: req_ce58c44b7d8d490888b2fe0b41d0a30c
+      created: 1754105934183
+      modified: 1754105958399
+      isPrivate: false
+      description: ""
+      sortKey: -1754105855144.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/books
+    name: Create Book
+    meta:
+      id: req_1d77489a0e914f1fb7968fa04d3b43f0
+      created: 1754105964696
+      modified: 1754109149695
+      isPrivate: false
+      description: ""
+      sortKey: -1754105863024.75
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        	  "title": "Meu Terceiro livro",
+        	  "isbn": "çksjpdojtpejryajhzdkgpc",
+        	  "publicationDate": "2022-08-02T00:00:00.000Z",
+        	  "status": "available",
+        	  "authorId": 2,
+        	  "genreId": 3
+          }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/books/2
+    name: Update Book
+    meta:
+      id: req_5af1da0f6790403c8efd096962242ba1
+      created: 1754106293021
+      modified: 1754106357082
+      isPrivate: false
+      description: ""
+      sortKey: -1754105866964.875
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Meu segundo livro",
+        	"isbn": "çksjpdojtpejryajhzdkgpp",
+        	"publicationDate": "2020-08-02T00:00:00.000Z",
+        	"status": "available",
+        	"authorId": 2,
+        	"genreId": 3
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/books/2
+    name: Delete Book
+    meta:
+      id: req_46c7d6e307714a81a81c3e2c65dc1c35
+      created: 1754106366202
+      modified: 1754106393220
+      isPrivate: false
+      description: ""
+      sortKey: -1754105868934.9375
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/reservations/1
+    name: Show Reservation
+    meta:
+      id: req_bd4a1fd1c1a940f2b56537503e1386a9
+      created: 1754106881116
+      modified: 1754106896818
+      isPrivate: false
+      description: ""
+      sortKey: -1754106881116
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/reservations
+    name: Create Reservation
+    meta:
+      id: req_85cf609a89eb4c3bb47f40476204b4a8
+      created: 1754106902675
+      modified: 1754161962982
+      isPrivate: false
+      description: ""
+      sortKey: -1754106902675
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {		"bookId": 2,
+        		"userId": 2,
+        		"reservationDate": "2025-08-02T16:15:00.000Z",
+        		"comment": "Quarto Teste de Reserva",
+        		"status": "pending",
+        		"createdAt": "2025-08-02T00:00:00.000Z",
+        		"updatedAt": "2025-08-02T00:00:00.000Z"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/reservations/4
+    name: Update Reservation
+    meta:
+      id: req_3f42d9b8fc7a48ada4796ff0eaf23cf4
+      created: 1754109754903
+      modified: 1754162080007
+      isPrivate: false
+      description: ""
+      sortKey: -1754109754903
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"bookId": 2,
+        	"userId": 2,
+        	"status": "approved",
+          "updatedAt": "2025-08-02T19:15.000Z"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/reservations/2
+    name: Delete Reservation
+    meta:
+      id: req_62f350ef17234502ba73ef860b7aa618
+      created: 1754109846623
+      modified: 1754109895446
+      isPrivate: false
+      description: ""
+      sortKey: -1754109846623
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_986cf9ddbe6d88161c81757b63b77ccc7d27d836
+    created: 1754102240885
+    modified: 1754102240885
+environments:
+  name: Base Environment
+  meta:
+    id: env_986cf9ddbe6d88161c81757b63b77ccc7d27d836
+    created: 1754102240882
+    modified: 1754102240882
+    isPrivate: false
