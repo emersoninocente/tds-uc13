@@ -85,8 +85,8 @@ import config from '../config/database.cjs';
 class Database {
     constructor() {
         try {
-          this.testConnection();
           this.connection = new Sequelize(config);
+          this.testConnection();
 //          this.init();
 //          this.sync();
         } catch (error) {
