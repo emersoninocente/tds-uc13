@@ -122,3 +122,83 @@ app.listen(process.env.PORT || 3000, () => {
 
 > Com isto já devemos ter um servidor com capacidade de rodar, vamos testar!
 ---
+
+### Material produzido em aula
+`src/server.js`
+```js
+import app from "./app.js";
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3000}`);
+});
+
+`src/app.js`
+```js
+import express from 'express';
+import { configDotenv } from 'dotenv';
+import routes from './routes.js';
+
+configDotenv();
+
+class App {
+  constructor() {
+    this.server = express();
+    this.middlewares();
+    this.routes();
+  }
+
+  middlewares() {
+    this.server.use(express.json());
+  }
+
+  routes() {
+    this.server.use(routes);
+  }
+}
+
+export default new App().server;
+
+`src/routes.js`
+```js
+import { Router } from 'express';
+
+const routes = new Router();
+
+routes.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the Library API! SELECT YOUR CLASS/METHOD.' });
+});
+
+// Usuários
+// Listar todos os usuários
+routes.get('/users', (req, res) => {
+    res.json({ message: 'Você entrou na listagem de todos os usuários!'})
+});
+// Listar um usuário
+routes.get('/users/:id', (req, res) => {
+    res.json({ message: 'Você entrou na listadem de um  usuário.' })
+});
+// Criar um usuário
+routes.post('/users', (req, res) => {
+    res.json({ message: 'Você está criando um uusário.'})
+});
+// Editar um usuário
+routes.put('/users/:id', (req, res) => {
+    res.json({ message: 'Você esta editado um user.'})
+});
+// Deletar um usuário
+routes.delete('/users/:id', (req, res) => {
+    res.json({ message: 'Você deletou o usuário.'})
+});
+
+// Livros
+// ...
+//routes.get('/books',);
+//routes.get('/books',);
+//routes.get('/books',);
+//routes.get('/books',);
+//routes.get('/books',);
+
+export default routes;
+```
+```
+```
