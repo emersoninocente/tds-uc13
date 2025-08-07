@@ -343,3 +343,5 @@ export default new UsersController();
 ---
 ## 📝 Material Extra
 - [Sequelize ORM](https://medium.com/@ogustavorichard/sequelize-orm-ccc3a54a5f05)
+
+---
