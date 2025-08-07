@@ -137,6 +137,21 @@ export default new Database();
 > Conforme o modelo apresentado teremos quatro modelos a serem criados, um para *reservations*, um para *users*, outro para *books* e finalmente um para *genres*. Claro que para cada situações teremos mais ou menos modelos a serem representados em nosso programa. E no caso de entidades no SGBD que não precisam ser manipuladas por nosssa programação, não precisam ser "modeladas".
 - Deixo o modelo SQL abaixo (atenção que modelo precisa alguns ajustes):
 
+- Executar em terminal CLI do Linux:
+```bash
+sudo mysql
+```
+
+- Executar na CLI do MySQL:
+```sql
+CREATE DATABASE minhabasededados;
+CREATE USER 'meuusuario'@'localhost' IDENTIFIED BY 'minhasenhadobanco';
+GRANT ALL PRIVILEGES ON minhabasededados.* TO 'meuusuario'@'localhost';
+FLUSH PRIIVILEGES;
+USE minhabasededados;
+```
+
+- Criar as tabelas na base de dados:
 ```sql
 CREATE OR REPLACE TABLE `users` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
@@ -149,7 +164,7 @@ CREATE OR REPLACE TABLE `users` (
 	`isAuthor` BOOLEAN NOT NULL DEFAULT false,
 	`status` BOOLEAN NOT NULL DEFAULT true,
 	`password` VARCHAR(255) NOT NULL,
-	PRIMARY KEY(`id`, `email`, `phone`)
+	PRIMARY KEY(`id`)
 );
 
 CREATE OR REPLACE TABLE `books` (
@@ -158,7 +173,7 @@ CREATE OR REPLACE TABLE `books` (
 	`isbn` VARCHAR(255) NOT NULL,
 	`genreId` INTEGER NOT NULL,
 	`authorId` INTEGER NOT NULL,
-	PRIMARY KEY(`id`, `isbn`)
+	PRIMARY KEY(`id`)
 );
 
 CREATE OR REPLACE TABLE `genres` (
