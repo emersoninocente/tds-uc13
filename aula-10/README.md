@@ -497,3 +497,134 @@ UNLOCK TABLES;
 
 -- Dump completed on 2025-08-07 10:18:51
 ```
+
+---
+## Aula 11/08/2025
+### Construindo as Models
+>`src/models/BookModel.js`
+```js
+import Sequelize, { Model } from 'sequelize';
+
+class BookModel extends Model {
+    static init(sequelize) {
+        super.init({
+            title: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            isbn: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                unique: true,
+                key: true,
+            },
+            genreId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'genres',
+                    key:'id',
+                },
+                onUpdate: 'NO ACTION',
+                onDelete: 'NO ACTION',
+            },
+            authorId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'users',
+                    key: 'id',
+                },
+                onUpdate: 'NO ACTION',
+                onDelete: 'NO ACTION',
+            }
+        },{
+            sequelize,
+            tableName: 'books',
+        })
+    }
+
+    static associate(models) {
+        this.belongsTo(models.GenreModel, {foreignKey: 'id', as: 'genres'});
+        this.belongsTo(models.UserModel, {foreignKey: 'id', as: 'users'});
+        this.hasMany(models.ReservationModel, {foreignKey: 'bookId', as: 'reservations'});
+    }
+}
+
+export default BookModel;
+```
+
+>`src/models/GenreModel.js`
+```js
+import Sequelize, { Model } from 'sequelize';
+
+class GenreModel extends Model {
+    static init(sequelize) {
+        super.init({
+            name:{
+                type: Sequelize.STRING,
+                allowNull: false,
+            }
+        },{
+            sequelize,
+            tableName: 'genres',
+        })
+    }
+
+    static associate(models){
+        this.hasMany(models.BookModel, {foreignKey: 'genreId', as: 'books'})
+    }
+}
+
+export default GenreModel;
+```
+
+> `src/models/ReservationModel.js`
+```js
+import Sequelize, { Model } from 'sequelize';
+
+class ReservationModel extends Model {
+    static init(sequelize) {
+        super.init({
+            bookId:{
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'books',
+                    key: 'id'
+                },
+                onDelete: 'NO ACTION',
+                onUpdate: 'NO ACTION'
+            },
+            userId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                },
+                onDelete: 'NO ACTION',
+                onUpdate: 'NO ACTION'
+            },
+            date: {
+                type: Sequelize.DATE,
+                allowNull: false
+            },
+            comment: {
+                type: Sequelize.STRING,
+                allowNull: true
+            }
+        },{
+            sequelize,
+            tableName: 'reservations',
+        })
+    }
+
+    static associate(models){
+        this.belongsTo(models.BookModel, {foreignKey: 'id', as: 'books'}),
+        this.belongsTo(models.UserModel, {foreignKey: 'id', as: 'users'})
+    }
+}
+
+export default ReservationModel;
+```
