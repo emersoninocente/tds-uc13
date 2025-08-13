@@ -8,7 +8,7 @@
 
 ---
 ## 🔄 Finalizando Controllers
-> Fazer download do arquivo [code_aula12Ago2025.tar.bz2](https://github.com/emersoninocente/tds-uc13/blob/main/aula-11/code_aula12Ago2025.tar.bz2) dentro da VM Linux. Descompactar o arquivo e copiar o conteúdo para dentro da pasta do projeto nova-api.
+> Fazer download do arquivo [code_aula-12Ago2025.tar.bz2](https://github.com/emersoninocente/tds-uc13/blob/main/aula-11/code_aula-12Ago2025.tar.bz2) dentro da VM Linux. Descompactar o arquivo e copiar o conteúdo para dentro da pasta do projeto nova-api.
 > Cumprida esta etapa, precisamos finalizar a criação das regras de cada médoto dos controllers para **gênero** e **reservas**.
 
 ---
