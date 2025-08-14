@@ -130,24 +130,30 @@ app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
 ---
 
 ## 🧱 Aula dia 14/08/2025
-> Executar download do código da aula do dia 13/08 e descompactar na pasta do projeto.
+> Executar download do código da aula do dia [13/08](https://github.com/emersoninocente/tds-uc13/blob/main/aula-11/src_aula_13Ago2025.zip) e descompactar na pasta do projeto.
 
 ### 🔧 Criando filtros oriundos da requisição
-> Vamos criar a possibilidade de aplicar filtros na nossa requisição.
+> Vamos criar a possibilidade de aplicar filtros na nossa requisição. Quando recebemos uma requisição podemos ter filtros para alguns campos, como por exemplo **name**, **email** ou **status**. Para isto vamos criar um novo método para listar os usuários com estas condições, veja exemplo de código abaixo.
 
 `src/controllers/UsersController.js`
 ```js
 async index2(req, res) {
         try {
             console.log('Alerta: GET :: USERS.index2');
+            // Exemplo de URI contendo filtros
             // http://servidor:porta/users?name=Joao%&status=active,banned
+            // Lembrando que vamos passar os parâmetros via body e parâmetros na URI
+
+            // Precisamos capturar as variáveis da requisição
             const { name, email, status, sort } = req.body;
 
             // Criar uma variavel para receber os filtros
             let where = {};
+
             // Testar os campos dos filtros e carregar na where
             if (name) {
                 where = {
+                    // Este modelo de escrita **...where** vai fazer com que seja concatenado na variável os valores seguintes.
                     ...where, name: { [Op.like]: name }
                 }
             }
@@ -158,15 +164,16 @@ async index2(req, res) {
             }
             if (status) {
                 where = {
-                    ...where, status: { [Op.in]: status.split(",") }
+                    ...where, status: { [Op.in]: status.split(",") } //O método split vai dividir os valores separados por , para dentro de um array
                 }
             }
+            // Resultado da composição acima que vai para o banco de dados
             // SQL: where name like = 'João%' and status = ['active','banned']
 
 
             // Devemos carregar nossa query com os dados dos filtros
             const users = await User.findAll({
-                where,
+                **where,**
                 attributes: { exclude: ['password'] }
             });
             return res.json(users);
