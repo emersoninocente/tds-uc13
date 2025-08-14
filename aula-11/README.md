@@ -173,7 +173,7 @@ async index2(req, res) {
 
             // Devemos carregar nossa query com os dados dos filtros
             const users = await User.findAll({
-                **where,**
+                where,
                 attributes: { exclude: ['password'] }
             });
             return res.json(users);
