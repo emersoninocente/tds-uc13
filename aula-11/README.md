@@ -128,3 +128,51 @@ app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
 
 > Vamos agora aplicar validações no nosso código.
 ---
+
+## Aula dia 14/08/2025
+> Executar download do código da aula do dia 13/08 e descompactar na pasta do projeto.
+
+### Criando filtros oriundos da requisição
+> Vamos criar a possibilidade de aplicar filtros na nossa requisição.
+
+`src/controllers/UsersController.js`
+```js
+async index2(req, res) {
+        try {
+            console.log('Alerta: GET :: USERS.index2');
+            // http://servidor:porta/users?name=Joao%&status=active,banned
+            const { name, email, status, sort } = req.body;
+
+            // Criar uma variavel para receber os filtros
+            let where = {};
+            // Testar os campos dos filtros e carregar na where
+            if (name) {
+                where = {
+                    ...where, name: { [Op.like]: name }
+                }
+            }
+            if (email) {
+                where = {
+                    ...where, email: { [Op.like]: email }
+                }
+            }
+            if (status) {
+                where = {
+                    ...where, status: { [Op.in]: status.split(",") }
+                }
+            }
+            // SQL: where name like = 'João%' and status = ['active','banned']
+
+
+            // Devemos carregar nossa query com os dados dos filtros
+            const users = await User.findAll({
+                where,
+                attributes: { exclude: ['password'] }
+            });
+            return res.json(users);
+        } catch (err) {
+            console.log('Erro: GET :: USERS', err)
+            return res.status(500).json({ error: 'Falha ao executar o processo.' });
+        }
+    }
+```
