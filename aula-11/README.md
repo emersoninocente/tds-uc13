@@ -191,3 +191,11 @@ async index2(req, res) {
 routes.get('/users2', users.index2);
 ...
 ```
+
+---
+### 📚 Atividade prática
+- Criar um novo método que permita aplicar filtro por **name** para as consulta de gêneros.
+
+💡Dicas:
+* O código deve ser criado na `src/controllers/GenresController.js`
+* Não esqueca de criar uma rota em `src/routes.js`
