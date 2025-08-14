@@ -176,3 +176,11 @@ async index2(req, res) {
         }
     }
 ```
+> Precisamos criar uma nova rota para o novo método criado acima.
+
+`src/routes.js`
+```js
+...
+routes.get('/users2', users.index2);
+...
+```
