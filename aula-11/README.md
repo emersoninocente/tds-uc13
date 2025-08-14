@@ -129,10 +129,10 @@ app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
 > Vamos agora aplicar validações no nosso código.
 ---
 
-## Aula dia 14/08/2025
+## 🧱 Aula dia 14/08/2025
 > Executar download do código da aula do dia 13/08 e descompactar na pasta do projeto.
 
-### Criando filtros oriundos da requisição
+### 🔧 Criando filtros oriundos da requisição
 > Vamos criar a possibilidade de aplicar filtros na nossa requisição.
 
 `src/controllers/UsersController.js`
