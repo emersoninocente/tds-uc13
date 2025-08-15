@@ -79,3 +79,11 @@ import swaggerJSDoc from 'swagger-jsdoc';
 6. Rota acessível em **`http://localhost:[PORTA]/api-docs`** conforme definido no método criado.
 
 ---
+## 🧮 Atividades práticas
+1) Aplicar documentação na nossa API
+2) Acessar a documentação gerada e validar se Ok
+
+---
+## 📚 Recursos de apoio
+* [Swagger UI](https://swagger.io/tools/swagger-ui/)
+* [Exemplos JSDoc + Swagger](https://github.com/Surnet/swagger-jsdoc)
