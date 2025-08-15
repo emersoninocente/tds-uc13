@@ -18,10 +18,40 @@
 ### Etapas:
 1. Instalar
 ```bash
-npm install swagger-ui-express swagger-jsdoc
+npm install swagger-ui swagger-ui-express swagger-jsdoc
 ```
-2. Criar arquivo **`swagger.js`**
-3. Adicionar comentários JSDoc nas rotas
+2. Precisamos importar os middlawares do Swagger no `app.js`
+```js
+...
+import swaggerUI from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
+...
+```
+3. Precisamos criar um método para o Swagger
+> Neste método vamos colocar as configurações do Swagger, informando o nome da API, uma descrição, a versão da API e demais info necessárias. Precisamos informar em que arquivo ou arquivos o Swagger vai encontrar as descrições da documentação. Para isto usamos a tag `apis: []`, como trata-se de um Array podemos ter mais de um local.
+
+`app.js`
+```js
+  ...
+  swaggerDOCS() {
+    const options = {
+      definition: {
+        openapi: "3.0.0",
+        info: {
+          title: "API",
+          version: "1.0.0",
+        },
+      },
+      apis: ['./src/routes.js'],
+    };
+    const swaggerSpec = swaggerJSDoc(options);
+    this.server.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+  }
+  ...
+```
+4. Uma vez criado o método precisamos instanciá-lo dentro do método `constructor()`
+
+5. Adicionar comentários JSDoc nas rotas
 ```js
 /**
  * @swagger
@@ -46,5 +76,6 @@ npm install swagger-ui-express swagger-jsdoc
  *         description: Usuário criado com sucesso
  */
 ```
-4. Rota acessível em **`http://localhost:3000/api-docs`**
+6. Rota acessível em **`http://localhost:[PORTA]/api-docs`** conforme definido no método criado.
+
 ---
