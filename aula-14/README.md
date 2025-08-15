@@ -1,4 +1,4 @@
-# 🧑‍🎨 Aula 14 - Testes automatizados
+# 🧑‍🎨 Aula 14 - Aplicando autenticação
 ## 🎯 Objetivos
 
 

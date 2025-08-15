@@ -1,4 +1,4 @@
-# 📝 Aula 13 - Documentação automatizada
+# 📝 Aula 13 - Testes automatizados
 ## 🎯 Objetivos
 
 
