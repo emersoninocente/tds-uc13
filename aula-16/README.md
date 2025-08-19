@@ -8,7 +8,7 @@
 > - Clausula WHERE e ORDER BY
 >   - Uso da classe Op do Sequelize
 > 
-> Temos o código finalizado em [material filtros e ordenação](https://github.com/emersoninocente/tds-uc13/blob/main/aula-16/src_aula16_parte-01.zip]
+> Temos o código finalizado em [material filtros e ordenação](https://github.com/emersoninocente/tds-uc13/blob/main/aula-16/src_aula16_parte-01.zip)
 
 ---
 ## 📝 Revisão do processo de documentação do projeto
