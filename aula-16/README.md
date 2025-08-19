@@ -19,4 +19,4 @@
 > - Modelo da documentação dentro do nosso código
 > - Acesso a documentação do projeto
 >
-> Temos o código finalizado em ...
+> Temos o código finalizado em [material documentação usando Swagger](https://github.com/emersoninocente/tds-uc13/blob/main/aula-16/src_aula16_parte-02.zip)
