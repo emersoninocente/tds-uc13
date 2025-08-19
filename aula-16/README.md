@@ -3,10 +3,10 @@
 ## ⚖️ Revisão do processo de aplicação dos filtros e ordenação
 > Na aula 11 iniciamos o processo de aplicar validações, filtros e ordenação no nosso código. Falamos de:
 > - Middleware
->   # Sequelize para executar validações usando a tag ##validade## nos `models`
->   # Uso de código especialmente criado dentro da nossa programação como um `middleware` local e armazenado dentro de `src/middlewares`
+>   - Sequelize para executar validações usando a tag ##validade## nos `models`
+>   - Uso de código especialmente criado dentro da nossa programação como um `middleware` local e armazenado dentro de `src/middlewares`
 > - Clausula WHERE e ORDER BY
->   # Uso da classe Op do Sequelize
+>   - Uso da classe Op do Sequelize
 > 
 > Temos o código finalizado em ...
 
